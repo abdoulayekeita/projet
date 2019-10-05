@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBoutiquesTable extends Migration
+class CreateProduitImagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,11 @@ class CreateBoutiquesTable extends Migration
      */
     public function up()
     {
-        Schema::create('boutiques', function (Blueprint $table) {
+        Schema::create('produit_images', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('nom_boutique');
-            $table->string('pays');
-            $table->string('ville');
-            $table->string('quartier');
-            $table->string('rue');
+            $table->integer('produit_id')->unsigned();
+            $table->foreign('produit_id')->references('id')->on('produits');
+            $table->string('filename');
             $table->timestamps();
         });
     }
@@ -31,6 +29,6 @@ class CreateBoutiquesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('boutiques');
+        Schema::dropIfExists('produit_images');
     }
 }

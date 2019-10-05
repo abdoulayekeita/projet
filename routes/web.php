@@ -42,3 +42,5 @@ Route::get('/registe', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/upload', 'UploadController@uploadBoutiqueForm');
+Route::post('/upload', 'UploadController@uploadBoutiqueSubmit');
